@@ -1,5 +1,7 @@
 package com.bl.game;
 
+import java.util.Random;
+
 public class GameMain {
     public static void main(String[] args) {
 
@@ -8,6 +10,8 @@ public class GameMain {
         game.initializeBoard();
         game.showBoard();
         game.selectInput();
+        game.selectStartingPlayer();
         game.selectBoardLocation();
+
     }
 }

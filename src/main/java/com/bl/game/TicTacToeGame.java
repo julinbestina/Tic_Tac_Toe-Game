@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TicTacToeGame {
 
     char[] board = new char[10];
-    char userInput, computerInput;
+    char userInput, computerInput, player;
     Scanner sc = new Scanner(System.in);
 
     public void initializeBoard() {
@@ -34,16 +34,14 @@ public class TicTacToeGame {
         System.out.println("User input: " + userInput + ", " + "Computer input: " + computerInput);
     }
 
+
     public void selectBoardLocation() {
-        char userChoice;
-        do {
-            System.out.println("Select Location in the board to insert input from 1-9: ");
-            int userLocation = sc.nextInt();
-            selectBoardLocationRec(userLocation);
-            System.out.println("Wish to insert again: Y?N");
-            userChoice = sc.next().toUpperCase().charAt(0);
-        } while (userChoice == 'Y');
+
+        System.out.println("Select Location in the board to insert input from 1-9: ");
+        int userLocation = sc.nextInt();
+        selectBoardLocationRec(userLocation);
     }
+
 
     private void selectBoardLocationRec(int userLocation) {
 
@@ -62,6 +60,13 @@ public class TicTacToeGame {
                 selectBoardLocation();
             }
         }
+    }
+
+    public void selectStartingPlayer() {
+
+        int coinFlip = (int) ((Math.random() * 10) % 2);
+        player = coinFlip == 1 ? userInput : computerInput;
+        System.out.println("Starting Player is " + player);
     }
 }
 
