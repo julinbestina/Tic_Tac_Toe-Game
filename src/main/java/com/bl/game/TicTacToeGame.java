@@ -35,23 +35,31 @@ public class TicTacToeGame {
     }
 
     public void selectBoardLocation() {
-
-        System.out.println("Select Locations in the board to insert input from 1-9: ");
-        int userLocation = sc.nextInt();
-
+        char userChoice;
         do {
-            if (userLocation > board.length - 1) {
-                System.out.println("Enter correct location \n Select Locations in the board to insert input from 1-9: ");
-                userLocation = sc.nextInt();
-            }
-        } while (userLocation >= board.length);
+            System.out.println("Select Location in the board to insert input from 1-9: ");
+            int userLocation = sc.nextInt();
+            selectBoardLocationRec(userLocation);
+            System.out.println("Wish to insert again: Y?N");
+            userChoice = sc.next().toUpperCase().charAt(0);
+        } while (userChoice == 'Y');
+    }
 
+    private void selectBoardLocationRec(int userLocation) {
+
+        if (userLocation > board.length - 1) {
+            System.out.println("Enter correct location");
+            selectBoardLocation();
+        }
 
         for (int i = 0; i < board.length; i++) {
             if (userLocation == i && board[i] == ' ') {
                 board[i] = userInput;
                 showBoard();
                 break;
+            } else if (userLocation == i && board[i] != ' ') {
+                System.out.println("Location already used");
+                selectBoardLocation();
             }
         }
     }
