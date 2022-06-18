@@ -5,5 +5,6 @@ public class GameMain {
 
         TicTacToeGame game = new TicTacToeGame();
         game.initializeBoard();
+        game.selectInput();
     }
 }
