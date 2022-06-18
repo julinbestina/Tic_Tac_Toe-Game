@@ -6,7 +6,8 @@ public class GameMain {
         TicTacToeGame game = new TicTacToeGame();
 
         game.initializeBoard();
-        game.selectInput();
         game.showBoard();
+        game.selectInput();
+        game.selectBoardLocation();
     }
 }
