@@ -37,9 +37,12 @@ public class TicTacToeGame {
     }
 
     public void selectBoardLocation(char turn) {
-        if (turn == computerInput)
-            playComputerTurn(turn);
 
+        if (turn == computerInput) {
+            System.out.println("\nComputer turn to play:");
+            playComputerTurn(turn);
+            playComputerTurn(userInput);
+        }
         System.out.println("Select Location in the board to insert input from 1-9 for " + turn + ": ");
         int userLocation = sc.nextInt();
         selectBoardLocationRec(userLocation, turn);
@@ -110,39 +113,50 @@ public class TicTacToeGame {
     }
 
     public void playComputerTurn(char turn) {
-        System.out.println("\nComputer turn to play:");
 
         for (int i = 1; i < 8; i = i + 3) {
             if (board[i] == turn && board[i + 1] == turn && board[i + 2] == ' ') {
+                turn = computerInput;
                 selectBoardLocationRec(i + 2, turn);
             } else if (board[i] == turn && board[i + 2] == turn && board[i + 1] == ' ') {
+                turn = computerInput;
                 selectBoardLocationRec(i + 1, turn);
             } else if (board[i + 2] == turn && board[i + 1] == turn && board[i] == ' ') {
+                turn = computerInput;
                 selectBoardLocationRec(i, turn);
             }
         }
 
         for (int i = 1; i < 4; i = i + 1) {
             if (board[i] == turn && board[i + 3] == turn && board[i + 6] == ' ') {
+                turn = computerInput;
                 selectBoardLocationRec(i + 6, turn);
             } else if (board[i] == turn && board[i + 6] == turn && board[i + 3] == ' ') {
+                turn = computerInput;
                 selectBoardLocationRec(i + 3, turn);
             } else if (board[i + 3] == turn && board[i + 6] == turn && board[i] == ' ') {
+                turn = computerInput;
                 selectBoardLocationRec(i, turn);
             }
         }
 
         if (board[1] == turn && board[5] == turn && board[9] == ' ') {
+            turn = computerInput;
             selectBoardLocationRec(9, turn);
         } else if (board[1] == turn && board[9] == turn && board[5] == ' ') {
+            turn = computerInput;
             selectBoardLocationRec(5, turn);
         } else if (board[5] == turn && board[9] == turn && board[1] == ' ') {
+            turn = computerInput;
             selectBoardLocationRec(1, turn);
         } else if (board[3] == turn && board[5] == turn && board[7] == ' ') {
+            turn = computerInput;
             selectBoardLocationRec(7, turn);
         } else if (board[3] == turn && board[7] == turn && board[5] == ' ') {
+            turn = computerInput;
             selectBoardLocationRec(5, turn);
         } else if (board[5] == turn && board[7] == turn && board[3] == ' ') {
+            turn = computerInput;
             selectBoardLocationRec(3, turn);
         }
     }
