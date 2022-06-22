@@ -7,11 +7,11 @@ public class GameMain {
 
         TicTacToeGame game = new TicTacToeGame();
 
-            game.initializeBoard();
-            game.showBoard();
-            game.selectInput();
-            char turn = game.selectStartingPlayer();
-            game.selectBoardLocation(turn);
+        game.initializeBoard();
+        game.showBoard();
+        game.selectInput();
+        char turn = game.selectStartingPlayer();
+        game.selectBoardLocation(turn);
 
     }
 }

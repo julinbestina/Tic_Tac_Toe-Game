@@ -9,6 +9,7 @@ public class TicTacToeGame {
     char[] board = new char[10];
     char userInput, computerInput, player;
     int count = 0;
+    boolean flag;
     Scanner sc = new Scanner(System.in);
 
     public void initializeBoard() {
@@ -40,8 +41,8 @@ public class TicTacToeGame {
 
         if (turn == computerInput) {
             System.out.println("\nComputer turn to play:");
+            flag = true;
             playComputerTurn(turn);
-            playComputerTurn(userInput);
         }
         System.out.println("Select Location in the board to insert input from 1-9 for " + turn + ": ");
         int userLocation = sc.nextInt();
@@ -116,50 +117,45 @@ public class TicTacToeGame {
 
         for (int i = 1; i < 8; i = i + 3) {
             if (board[i] == turn && board[i + 1] == turn && board[i + 2] == ' ') {
-                turn = computerInput;
-                selectBoardLocationRec(i + 2, turn);
+                selectBoardLocationRec(i + 2, computerInput);
             } else if (board[i] == turn && board[i + 2] == turn && board[i + 1] == ' ') {
-                turn = computerInput;
-                selectBoardLocationRec(i + 1, turn);
+                selectBoardLocationRec(i + 1, computerInput);
             } else if (board[i + 2] == turn && board[i + 1] == turn && board[i] == ' ') {
-                turn = computerInput;
-                selectBoardLocationRec(i, turn);
+                selectBoardLocationRec(i, computerInput);
             }
         }
 
         for (int i = 1; i < 4; i = i + 1) {
             if (board[i] == turn && board[i + 3] == turn && board[i + 6] == ' ') {
-                turn = computerInput;
-                selectBoardLocationRec(i + 6, turn);
+                selectBoardLocationRec(i + 6, computerInput);
             } else if (board[i] == turn && board[i + 6] == turn && board[i + 3] == ' ') {
-                turn = computerInput;
-                selectBoardLocationRec(i + 3, turn);
+                selectBoardLocationRec(i + 3, computerInput);
             } else if (board[i + 3] == turn && board[i + 6] == turn && board[i] == ' ') {
-                turn = computerInput;
-                selectBoardLocationRec(i, turn);
+                selectBoardLocationRec(i, computerInput);
             }
         }
 
         if (board[1] == turn && board[5] == turn && board[9] == ' ') {
-            turn = computerInput;
-            selectBoardLocationRec(9, turn);
+            selectBoardLocationRec(9, computerInput);
         } else if (board[1] == turn && board[9] == turn && board[5] == ' ') {
-            turn = computerInput;
-            selectBoardLocationRec(5, turn);
+            selectBoardLocationRec(5, computerInput);
         } else if (board[5] == turn && board[9] == turn && board[1] == ' ') {
-            turn = computerInput;
-            selectBoardLocationRec(1, turn);
+            selectBoardLocationRec(1, computerInput);
         } else if (board[3] == turn && board[5] == turn && board[7] == ' ') {
-            turn = computerInput;
-            selectBoardLocationRec(7, turn);
+            selectBoardLocationRec(7, computerInput);
         } else if (board[3] == turn && board[7] == turn && board[5] == ' ') {
-            turn = computerInput;
-            selectBoardLocationRec(5, turn);
+            selectBoardLocationRec(5, computerInput);
         } else if (board[5] == turn && board[7] == turn && board[3] == ' ') {
-            turn = computerInput;
-            selectBoardLocationRec(3, turn);
+            selectBoardLocationRec(3, computerInput);
+        } else if (count >= 4 && flag) {
+            flag = false;
+            playComputerTurn(userInput);
+        } else {
+            for (int i = 1; i < board.length; i = i + 2) {
+                if (board[i] == ' ')
+                    selectBoardLocationRec(i, computerInput);
+            }
         }
-        //checkNextMove(turn);
     }
 }
 
