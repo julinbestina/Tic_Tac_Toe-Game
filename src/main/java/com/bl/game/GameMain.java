@@ -6,12 +6,12 @@ public class GameMain {
     public static void main(String[] args) {
 
         TicTacToeGame game = new TicTacToeGame();
-
-        game.initializeBoard();
-        game.showBoard();
-        game.selectInput();
-        char turn = game.selectStartingPlayer();
-        game.selectBoardLocation(turn);
+        System.out.println("Welcome to Tic Tac Toe Game\n");
+            game.initializeBoard();
+            game.showBoard();
+            game.selectInput();
+            char turn = game.selectStartingPlayer();
+            game.selectBoardLocation(turn);
 
     }
 }
