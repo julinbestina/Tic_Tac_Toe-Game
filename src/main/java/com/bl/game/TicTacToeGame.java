@@ -8,7 +8,7 @@ public class TicTacToeGame {
 
     char[] board = new char[10];
     char userInput, computerInput, player;
-    int count = 1;
+    int count = 0;
     Scanner sc = new Scanner(System.in);
 
     public void initializeBoard() {
@@ -58,6 +58,7 @@ public class TicTacToeGame {
         for (int i = 1; i < board.length; i++) {
             if (userLocation == i && board[i] == ' ') {
                 board[i] = turn;
+                count++;
                 showBoard();
                 checkNextMove(turn);
             } else if (userLocation == i && board[i] != ' ') {
@@ -100,7 +101,6 @@ public class TicTacToeGame {
             for (int i = 1; i < board.length; i++) {
                 if (board[i] == ' ') {
                     selectBoardLocation((turn == computerInput) ? userInput : computerInput);
-                    count++;
                 }
                 if (count == 9) {
                     System.out.println("draw and Thank you");
@@ -159,6 +159,7 @@ public class TicTacToeGame {
             turn = computerInput;
             selectBoardLocationRec(3, turn);
         }
+        //checkNextMove(turn);
     }
 }
 
