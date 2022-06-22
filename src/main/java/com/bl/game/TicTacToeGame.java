@@ -156,6 +156,12 @@ public class TicTacToeGame {
                     selectBoardLocationRec(i, computerInput);
             }
         }
+
+        for (int i = 2; i < board.length; i = i + 2) {
+            if (board[i] == ' ')
+                selectBoardLocationRec(i, computerInput);
+        }
+
     }
 }
 
